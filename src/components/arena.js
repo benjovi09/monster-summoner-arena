@@ -1,11 +1,12 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React from 'react';
+import { useSelector } from 'react-redux';
+import { Button, ButtonGroup, Card } from 'react-bootstrap';
 
 export default function () {
   const player = useSelector((state) => state.playerReducer);
   const enemy = {
-    name: "goblin",
-    stance: "normal",
+    name: 'goblin',
+    stance: 'normal',
     attributes: {
       body: {
         strength: 1.5,
@@ -22,6 +23,7 @@ export default function () {
   };
 
   function Fight(playerMonsters, enemies) {
+    console.log('lol');
     const initiative = GetInitiative(playerMonsters.concat(enemies));
     initiative.forEach((monster) => {
       if (playerMonsters.includes(monster)) {
@@ -33,13 +35,12 @@ export default function () {
   }
 
   function GetInitiative(monsters) {
-    const rolls = monsters.map((m) =>  [m.name, m.attributes.body.agility * Math.random()]); // * 2 if stance is aggressive, / 2 if defensive;
+    const rolls = monsters.map((m) => [m.name, m.attributes.body.agility * Math.random()]); // * 2 if stance is aggressive, / 2 if defensive;
     return rolls.sort(SortInitiativeRolls);
-    
   }
 
-  function SortInitiativeRolls(roll1, roll2){
-      return roll1-roll2;
+  function SortInitiativeRolls(roll1, roll2) {
+    return roll1 - roll2;
   }
 
   return (
@@ -48,7 +49,7 @@ export default function () {
         {player.monsters.map((monster) => (
           <li>
             {monster.name}
-            <button onClick={() => Fight([monster], [enemy])}>Fight!</button>
+            <Button onClick={() => Fight([monster], [enemy])}>Fight!!</Button>
           </li>
         ))}
       </ul>

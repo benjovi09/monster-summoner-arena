@@ -7,6 +7,57 @@ export default function () {
   const [modalShow, setModalShow] = React.useState(false);
   const player = useSelector((state) => state.playerReducer);
 
+  const enemy = {
+    name: 'goblin',
+    stance: 'normal',
+    damage: 0,
+    attributes: {
+      body: {
+        strength: 1.5,
+        agility: 2,
+        toughness: 1,
+        endurance: 1,
+        recuperation: 0.5,
+      },
+      soul: {
+        //tbd for magic
+        //now i understand toady no magic
+      },
+    },
+  };
+
+  function TestFight(playerParty, enemyParty) {
+    GetInitiative(playerParty.monsters.concat(enemyParty.monsters)).forEach((monster) => {
+      TestAttack(monster, enemyParty.monsters[Math.floor(Math.random() * enemyParty.monsters.length)]);
+    });
+  }
+
+  function GetInitiative(monsters) {
+    const unorderedInit = monsters.map((m) => {
+      return {
+        ...m,
+        roll: m.attributes.body.agility * Math.random(), // * 2 if stance is aggressive, / 2 if defensive;
+      };
+    });
+
+    return unorderedInit.sort(SortInitiativeRolls);
+  }
+
+  function SortInitiativeRolls(a, b) {
+    return a.roll - b.roll;
+  }
+
+  function TestAttack(attacker, defender) {
+    const attackRoll = attacker.attributes.body.agility * Math.random();
+    const defendRoll = defender.attributes.body.agility * Math.random();
+    if (attackRoll > defendRoll) {
+      defender.damage = +(attacker.attributes.body.strength / defender.attributes.body.toughness) * Math.random();
+      console.log(defender.damage);
+    } else {
+      console.log(`Attacker ${attacker.name} missed defender ${defender.name}!`);
+    }
+  }
+
   return (
     <div>
       <MonsterEquipmentModal show={modalShow} onHide={() => setModalShow(false)} />
@@ -24,6 +75,9 @@ export default function () {
                   ))}
                 </ButtonGroup>
               </Card.Body>
+              <Card.Footer>
+                <Button onClick={() => TestFight(party, { name: 'enemies', monsters: [enemy] })}>Test Fight</Button>
+              </Card.Footer>
             </Card>
           );
         })}

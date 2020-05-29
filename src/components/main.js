@@ -14,7 +14,6 @@ export default function Main() {
                 <Player></Player>
                 <Armory></Armory>
                 <Markets></Markets>
-                <Arena></Arena>
             </Provider>
         </main>
     )
