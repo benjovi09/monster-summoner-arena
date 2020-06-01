@@ -1,13 +1,15 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Button, ButtonGroup, Card, ListGroup, ListGroupItem } from 'react-bootstrap';
+import { Card, ListGroup, ListGroupItem, ProgressBar } from 'react-bootstrap';
+import PartyProgressBar from './party-progress-bar.js';
+import 'holderjs';
 
 export default function () {
   const fightQueue = useSelector((state) => state.arenaReducer).fightQueue;
 
   return (
-    <Card style={{ width: '18rem' }}>
-      <Card.Img variant="top" data-src="holder.js/1300x500" />
+    <Card style={{ width: '24rem' }}>
+      <Card.Img variant="top" data-src="holder.js/300x125" />
       <Card.Body>
         <Card.Title>Arena</Card.Title>
         <Card.Text>Some arena text here.</Card.Text>
@@ -16,8 +18,19 @@ export default function () {
           {fightQueue.map((fight) => {
             return (
               <ListGroupItem key={fight.id}>
-                <Button variant="primary">Sign-Up</Button>
                 {fight.id}
+                <ListGroup>
+                  {fight.parties.map((party) => {
+                    return (
+                      <ListGroupItem>
+                        {party.name}
+                        <ProgressBar>
+                          <PartyProgressBar monsterIds={party.composition.map(position => [position.monsterId])} />
+                        </ProgressBar>
+                      </ListGroupItem>
+                    );
+                  })}
+                </ListGroup>
               </ListGroupItem>
             );
           })}

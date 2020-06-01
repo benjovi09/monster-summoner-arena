@@ -4,7 +4,39 @@ const defaultArena = {
   fightQueue: [
     {
       id: 1,
-      type: FightTypes.SINGLES,
+      type: FightTypes.DOUBLES,
+      parties: [
+        {
+          name: 'Neck Slicers',
+          composition: [
+            {
+              monsterId: 1,
+              xPosition: 0,
+              yPosition: 0,
+            },
+            {
+              monsterId: 2,
+              xPosition: 0,
+              yPosition: 1,
+            },
+          ],
+        },
+        {
+          name: 'Throat Cutters',
+          composition: [
+            {
+              monsterId: 3,
+              xPosition: 0,
+              yPosition: 0,
+            },
+            {
+              monsterId: 4,
+              xPosition: 0,
+              yPosition: 1,
+            },
+          ],
+        },
+      ],
     },
   ],
 };
