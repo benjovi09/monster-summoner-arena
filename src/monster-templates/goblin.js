@@ -1,5 +1,6 @@
 export default {
     name: "goblin",
+    damage: 0,
     stance: "normal",
     attributes: {
       body: {

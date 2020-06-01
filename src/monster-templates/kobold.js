@@ -1,5 +1,6 @@
 export default {
   name: "kobold",
+  damage: 0,
   stance: "aggressive",
   attributes: {
     body: {

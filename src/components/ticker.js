@@ -4,6 +4,8 @@ import { GenerateUUID, GenerateMonsterFromTemplate } from '../utils';
 import { FightTypes } from '../enums';
 import { Goblin, Kobold } from '../monster-templates';
 
+
+let partyCount=0;
 export default function () {
   const ticker = useSelector((state) => state.tickerReducer);
   const arena = useSelector((state) => state.arenaReducer);
@@ -15,7 +17,7 @@ export default function () {
       y = 0;
 
     return {
-      name: 'rando',
+      name: `Party ${partyCount++}`,
       composition: monsters.map((monster) => {
         return {
           monsterId: monster.id,
@@ -30,53 +32,53 @@ export default function () {
     switch (fightType) {
       case FightTypes.SINGLES:
         return [
-          GenerateParty([GenerateMonsterFromTemplate(Goblin)]),
-          GenerateParty([GenerateMonsterFromTemplate(Kobold)]),
+          GenerateParty([GenerateMonsterFromTemplate(dispatch, Goblin)]),
+          GenerateParty([GenerateMonsterFromTemplate(dispatch, Kobold)]),
         ];
       case FightTypes.DOUBLES:
         return [
-          GenerateParty([GenerateMonsterFromTemplate(Goblin), GenerateMonsterFromTemplate(Goblin)]),
-          GenerateParty([GenerateMonsterFromTemplate(Kobold), GenerateMonsterFromTemplate(Goblin)]),
+          GenerateParty([GenerateMonsterFromTemplate(dispatch, Goblin), GenerateMonsterFromTemplate(dispatch, Goblin)]),
+          GenerateParty([GenerateMonsterFromTemplate(dispatch, Kobold), GenerateMonsterFromTemplate(dispatch, Goblin)]),
         ];
       case FightTypes.TRIOS:
         return [
           GenerateParty([
-            GenerateMonsterFromTemplate(Kobold),
-            GenerateMonsterFromTemplate(Kobold),
-            GenerateMonsterFromTemplate(Goblin),
+            GenerateMonsterFromTemplate(dispatch, Kobold),
+            GenerateMonsterFromTemplate(dispatch, Kobold),
+            GenerateMonsterFromTemplate(dispatch, Goblin),
           ]),
           GenerateParty([
-            GenerateMonsterFromTemplate(Kobold),
-            GenerateMonsterFromTemplate(Kobold),
-            GenerateMonsterFromTemplate(Kobold),
+            GenerateMonsterFromTemplate(dispatch, Kobold),
+            GenerateMonsterFromTemplate(dispatch, Kobold),
+            GenerateMonsterFromTemplate(dispatch, Kobold),
           ]),
         ];
       case FightTypes.QUADS:
         return [
           GenerateParty([
-            GenerateMonsterFromTemplate(Kobold),
-            GenerateMonsterFromTemplate(Kobold),
-            GenerateMonsterFromTemplate(Kobold),
-            GenerateMonsterFromTemplate(Goblin),
+            GenerateMonsterFromTemplate(dispatch, Kobold),
+            GenerateMonsterFromTemplate(dispatch, Kobold),
+            GenerateMonsterFromTemplate(dispatch, Kobold),
+            GenerateMonsterFromTemplate(dispatch, Goblin),
           ]),
           GenerateParty([
-            GenerateMonsterFromTemplate(Kobold),
-            GenerateMonsterFromTemplate(Kobold),
-            GenerateMonsterFromTemplate(Kobold),
-            GenerateMonsterFromTemplate(Kobold),
+            GenerateMonsterFromTemplate(dispatch, Kobold),
+            GenerateMonsterFromTemplate(dispatch, Kobold),
+            GenerateMonsterFromTemplate(dispatch, Kobold),
+            GenerateMonsterFromTemplate(dispatch, Kobold),
           ]),
         ];
       case FightTypes.FFA:
         return [
-          GenerateParty([GenerateMonsterFromTemplate(Goblin)]),
-          GenerateParty([GenerateMonsterFromTemplate(Kobold)]),
-          GenerateParty([GenerateMonsterFromTemplate(Kobold)]),
-          GenerateParty([GenerateMonsterFromTemplate(Kobold)]),
+          GenerateParty([GenerateMonsterFromTemplate(dispatch, Goblin)]),
+          GenerateParty([GenerateMonsterFromTemplate(dispatch, Kobold)]),
+          GenerateParty([GenerateMonsterFromTemplate(dispatch, Kobold)]),
+          GenerateParty([GenerateMonsterFromTemplate(dispatch, Kobold)]),
         ];
       case FightTypes.BRAWL:
         return [
-          GenerateParty([GenerateMonsterFromTemplate(Goblin)]),
-          GenerateParty([GenerateMonsterFromTemplate(Kobold)]),
+          GenerateParty([GenerateMonsterFromTemplate(dispatch, Goblin)]),
+          GenerateParty([GenerateMonsterFromTemplate(dispatch, Kobold)]),
         ];
 
       default:

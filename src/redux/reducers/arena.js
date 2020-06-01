@@ -1,7 +1,7 @@
 import { FightTypes } from '../../enums';
 
 const defaultArena = {
-  fightQueue: [
+  fightQueue: [/*
     {
       id: 1,
       type: FightTypes.DOUBLES,
@@ -37,7 +37,7 @@ const defaultArena = {
           ],
         },
       ],
-    },
+    },*/
   ],
 };
 

@@ -1,17 +1,12 @@
 import { Goblin, Kobold } from '../../monster-templates';
 import { GenerateMonsterFromTemplate } from '../../utils';
 
-const defaultGoblin = GenerateMonsterFromTemplate(Goblin);
-const defaultKobold1 = GenerateMonsterFromTemplate(Kobold);
-const defaultKobold2 = GenerateMonsterFromTemplate(Kobold);
-const defaultKobold3 = GenerateMonsterFromTemplate(Kobold);
-const defaultKobold4 = GenerateMonsterFromTemplate(Kobold);
 
 export const defaultPlayer = {
   money: 25,
   summoningPower: 1,
   maxMonsterCountSize: 5,
-  maxMonsterPartySize: 2,
+  maxMonsterPartySize: 2,/*
   monsters: [
     defaultGoblin,
     defaultKobold1,
@@ -22,7 +17,7 @@ export const defaultPlayer = {
   monsterParties: [
     { name: 'party1', monsters: [defaultGoblin, defaultKobold1] },
     { name: 'party2', monsters: [defaultKobold2, defaultKobold3, defaultKobold4]},
-  ],
+  ],*/
 };
 
 export default function (state = defaultPlayer, action) {
