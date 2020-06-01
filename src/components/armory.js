@@ -28,7 +28,7 @@ export default function () {
 
   function TestFight(playerParty, enemyParty) {
     GetInitiative(playerParty.monsters.concat(enemyParty.monsters)).forEach((monster) => {
-      TestAttack(monster, enemyParty.monsters[Math.floor(Math.random() * enemyParty.monsters.length)]);
+      ExecuteTurn(monster);
     });
   }
 
@@ -47,6 +47,9 @@ export default function () {
     return a.roll - b.roll;
   }
 
+  function ExecuteTurn(monster){
+    
+  }
   function TestAttack(attacker, defender) {
     const attackRoll = attacker.attributes.body.agility * Math.random();
     const defendRoll = defender.attributes.body.agility * Math.random();

@@ -1,58 +1,28 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
-import { Button, ButtonGroup, Card } from 'react-bootstrap';
+import { useSelector, useDispatch } from 'react-redux';
+import { Button, ButtonGroup, Card, ListGroup, ListGroupItem } from 'react-bootstrap';
 
 export default function () {
-  const player = useSelector((state) => state.playerReducer);
-  const enemy = {
-    name: 'goblin',
-    stance: 'normal',
-    attributes: {
-      body: {
-        strength: 1.5,
-        agility: 2,
-        toughness: 1,
-        endurance: 1,
-        recuperation: 0.5,
-      },
-      soul: {
-        //tbd for magic
-        //now i understand toady no magic
-      },
-    },
-  };
-
-  function Fight(playerMonsters, enemies) {
-    console.log('lol');
-    const initiative = GetInitiative(playerMonsters.concat(enemies));
-    initiative.forEach((monster) => {
-      if (playerMonsters.includes(monster)) {
-        console.log(`monster ${monster.name} ready to attack enemy`);
-      } else {
-        console.log(`monster ${monster.name} ready to attack playerMonster`);
-      }
-    });
-  }
-
-  function GetInitiative(monsters) {
-    const rolls = monsters.map((m) => [m.name, m.attributes.body.agility * Math.random()]); // * 2 if stance is aggressive, / 2 if defensive;
-    return rolls.sort(SortInitiativeRolls);
-  }
-
-  function SortInitiativeRolls(roll1, roll2) {
-    return roll1 - roll2;
-  }
+  const fightQueue = useSelector((state) => state.arenaReducer).fightQueue;
 
   return (
-    <div>
-      <ul>
-        {player.monsters.map((monster) => (
-          <li>
-            {monster.name}
-            <Button onClick={() => Fight([monster], [enemy])}>Fight!!</Button>
-          </li>
-        ))}
-      </ul>
-    </div>
+    <Card style={{ width: '18rem' }}>
+      <Card.Img variant="top" data-src="holder.js/1300x500" />
+      <Card.Body>
+        <Card.Title>Arena</Card.Title>
+        <Card.Text>Some arena text here.</Card.Text>
+
+        <ListGroup>
+          {fightQueue.map((fight) => {
+            return (
+              <ListGroupItem key={fight.id}>
+                <Button variant="primary">Sign-Up</Button>
+                {fight.id}
+              </ListGroupItem>
+            );
+          })}
+        </ListGroup>
+      </Card.Body>
+    </Card>
   );
 }
