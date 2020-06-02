@@ -45,6 +45,11 @@ export default function (state = defaultArena, action) {
   switch (action.type) {
     case 'addFightQueue':
       return { ...state, fightQueue: [...state.fightQueue, action.data.fight] };
+      case 'FIGHT_RESULT':
+        return {
+          ...state,
+          fightQueue: state.fightQueue.filter(fight => fight.id != action.data.fightId)
+        }
     default:
       return state;
   }

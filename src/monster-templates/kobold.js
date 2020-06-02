@@ -17,4 +17,5 @@ export default {
   },
   weaponProficiencies: ["simple", "melee", "ranged"],
   equipment: {},
+  status: [],
 };

@@ -10,7 +10,9 @@ export default function (props) {
     <ProgressBar>
       {props.monsterIds.map((monsterId) => {
         const monster = monsters.find((monster) => monster.id == monsterId);
-        return <ProgressBar now={monster.damage} max={CalculateMaxDamageForMonster(monster)} key={key++} />;
+        const maxMonsterDamage = CalculateMaxDamageForMonster(monster);
+        const now = Math.min(monster.damage, maxMonsterDamage);
+        return <ProgressBar animated='true' striped='true' now={now} max={maxMonsterDamage} key={key++} />;
       })}
     </ProgressBar>
   );
