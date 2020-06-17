@@ -7,11 +7,13 @@ import Armory from './armory';
 import Markets from './markets';
 import Arena from './arena';
 import Ticker from './ticker';
+import CurrentFight from './fight/current-fight';
 
 export default function Main() {
   return (
     <main>
       <Provider store={store}>
+        <CurrentFight></CurrentFight>
         <Arena></Arena>
         <Ticker></Ticker>
       </Provider>

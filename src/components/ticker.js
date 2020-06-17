@@ -98,7 +98,7 @@ export default function () {
   }
 
   useEffect(() => {
-    var timerID = setInterval(() => tick(), 2000);
+    var timerID = setInterval(() => tick(), 2500);
 
     return function cleanup() {
       clearInterval(timerID);
