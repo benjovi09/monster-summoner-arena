@@ -18,4 +18,5 @@ export default {
   weaponProficiencies: ["simple", "melee", "ranged"],
   equipment: {},
   status: [],
+  img: "img/kobold.jpg",
 };

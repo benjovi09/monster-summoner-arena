@@ -1,7 +1,7 @@
 import React from 'react';
 import { ListGroup, ListGroupItem } from 'react-bootstrap';
 import { useSelector } from 'react-redux';
-import PartyStatusProgressBar from '../party-status-progress-bar';
+import PartyStatusProgressBar from './party-status-progress-bar';
 
 export default function () {
   const state = useSelector((state) => state.arenaReducer);
