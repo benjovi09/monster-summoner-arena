@@ -16,7 +16,6 @@ export default function (props) {
         const now = Math.min(monster.damage, maxMonsterDamage);
         return (
           <ProgressBar
-            
             className="party-progress-bar-part"
             animated="true"
             striped="true"

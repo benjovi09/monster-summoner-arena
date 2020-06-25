@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { Card, ListGroup, ListGroupItem, ProgressBar } from 'react-bootstrap';
+import { Card, ListGroup, ListGroupItem, ProgressBar, Container } from 'react-bootstrap';
 import { CalculateMaxDamageForMonster } from '../utils/index.js';
 
 export default function (props) {
@@ -21,6 +21,9 @@ export default function (props) {
             max={maxMonsterDamage}
             key={monster.id}
           />
+        </ListGroupItem>
+        <ListGroupItem>
+          {`${Math.round(now*10)} / ${Math.round(maxMonsterDamage*10)}`}
         </ListGroupItem>
       </ListGroup>
     </Card>

@@ -1,18 +1,21 @@
 import React from 'react';
-
+import { useSelector, useDispatch } from 'react-redux';
 import { Jumbotron } from 'react-bootstrap';
-import { useSelector } from 'react-redux';
 import { Container, Col, Row } from 'react-bootstrap';
 import FightCard from './party-card';
 
-export default function (props) {
-  const parties = useSelector((state) => state.arenaReducer).fightQueue[0]?.parties;
+export default function () {
+  const fight = useSelector((state) => state.arenaReducer).fightQueue[0];
+
+  if (!fight) {
+    return <div>lolnofight</div>;
+  }
 
   return (
     <Jumbotron>
       <Container>
         <Row>
-          {parties?.map((party) => (
+          {fight.parties?.map((party) => (
             <Col>
               <FightCard party={party}></FightCard>
             </Col>

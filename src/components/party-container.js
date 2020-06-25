@@ -33,7 +33,7 @@ export default function (props) {
       {battlefield.map((row) => (
         <Row>
           {row.map((col) => (
-            <Col xs={4}>
+            <Col xs={6}>
               <MonsterFightCard monsterId={col.monsterId} key={col.monsterId}></MonsterFightCard>
             </Col>
           ))}
