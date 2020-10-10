@@ -26,6 +26,7 @@ export function NextRound(dispatch, monsters, fight) {
   function TestAttack(attacker, defender) {
     const attackRoll = attacker.attributes.body.agility * Math.random();
     const defendRoll = defender.attributes.body.agility * Math.random();
+
     if (attackRoll > defendRoll) {
       dispatch({
         type: 'MONSTER_TAKE_DAMAGE',
@@ -34,7 +35,18 @@ export function NextRound(dispatch, monsters, fight) {
           damage: +(attacker.attributes.body.strength / defender.attributes.body.toughness) * Math.random(),
         },
       });
-    } else {
+    }
+
+    if (defender.status.includes('UNCONSCIOUS')) {
+      //const deathRoll = 
+      //if(deathRoll < 20){
+      dispatch({
+        type: 'MONSTER_DEATH',
+        data: {
+          id: defender.id,
+          killedById: attacker.id
+        }
+      });
     }
   }
 

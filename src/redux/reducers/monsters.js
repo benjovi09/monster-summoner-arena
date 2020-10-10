@@ -18,6 +18,16 @@ export default function (state = defaultMonsters, action) {
           } else return { ...monster, damage: monster.damage + action.data.damage };
         } else return monster;
       });
+    case 'MONSTER_DEATH':
+      return state.map((monster) => {
+        if(monster.id === action.data.id){
+          // return some value of some currency to owner
+        }
+        else if (monster.id === action.data.killedById){
+          // give monster some sort of bonus
+          // K/D tracking
+        }
+      });
     default:
       return state;
   }
