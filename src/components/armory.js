@@ -1,12 +1,13 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, TypedUseSelectorHook } from 'react-redux';
 import { MonsterEquipmentModal } from './monster-equipment-modal';
-import { Button, ButtonGroup, Card } from 'react-bootstrap';
+import Card, { Button, ButtonGroup } from 'react-bootstrap';
 
 export default function () {
   const [modalShow, setModalShow] = React.useState(false);
+  /** @type {import('../redux/store').playerReducer} */
   const player = useSelector((state) => state.playerReducer);
-
+  
   const enemy = {
     name: 'goblin',
     stance: 'normal',

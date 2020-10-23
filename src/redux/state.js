@@ -1,5 +1,5 @@
 
 
 export const defaultState = {
-    name = "hello world"
+    name: "hello world"
 }

@@ -1,5 +1,3 @@
-import { FightTypes } from '../../enums';
-
 const defaultArena = {
   fightQueue: [/*
     {
